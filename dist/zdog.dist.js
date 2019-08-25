@@ -719,8 +719,8 @@ Dragger.prototype.dragStart = function( event, pointer ) {
   event.preventDefault();
   this.dragStartX = pointer.pageX;
   this.dragStartY = pointer.pageY;
-  window.addEventListener( moveEvent, this );
-  window.addEventListener( upEvent, this );
+  this.element.addEventListener( moveEvent, this );
+  this.element.addEventListener( upEvent, this );
   this.onDragStart( pointer );
 };
 
@@ -745,8 +745,8 @@ Dragger.prototype.onmouseup =
 Dragger.prototype.onpointerup =
 Dragger.prototype.ontouchend =
 Dragger.prototype.dragEnd = function(/* event */) {
-  window.removeEventListener( moveEvent, this );
-  window.removeEventListener( upEvent, this );
+  this.element.removeEventListener( moveEvent, this );
+  this.element.removeEventListener( upEvent, this );
   this.onDragEnd();
 };
 
@@ -828,10 +828,10 @@ Illustration.prototype.setResize = function( resize ) {
   }
   // add/remove event listener
   if ( resize ) {
-    window.addEventListener( 'resize', this.resizeListener );
+    this.element.addEventListener( 'resize', this.resizeListener );
     this.onWindowResize();
   } else {
-    window.removeEventListener( 'resize', this.resizeListener );
+    this.element.removeEventListener( 'resize', this.resizeListener );
   }
 };
 

@@ -73,10 +73,10 @@ Illustration.prototype.setResize = function( resize ) {
   }
   // add/remove event listener
   if ( resize ) {
-    window.addEventListener( 'resize', this.resizeListener );
+    this.element.addEventListener( 'resize', this.resizeListener );
     this.onWindowResize();
   } else {
-    window.removeEventListener( 'resize', this.resizeListener );
+    this.element.removeEventListener( 'resize', this.resizeListener );
   }
 };
 
